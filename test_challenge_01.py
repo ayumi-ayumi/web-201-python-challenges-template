@@ -4,7 +4,18 @@
 # should be counted as vowels — not y.
 
 def count_vowels(word):
-    pass
+    count = 0
+    for each_character in word:
+        if each_character == 'a' or each_character == 'e' or each_character=='i' or each_character == 'o' or each_character == ' u':
+            count += 1
+    print(count)
+    return count
 
 def test_challenge_01_happy_case(): 
      assert count_vowels('Kaleidoscope') == 6   
+
+def test_challenge_01_empty_case(): 
+    assert count_vowels(' ') == 0
+
+ 
+#   Add test case
