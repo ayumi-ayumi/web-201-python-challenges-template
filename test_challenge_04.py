@@ -31,4 +31,4 @@ def test_challenge_04_palindrome_string2():
     assert is_palindrome('LOL') == True    
 
 def test_challenge_04_palindrome_string3():
-    assert is_palindrome('Ayumi') == False  
+    assert is_palindrome('MaddaM') == True  
