@@ -11,11 +11,17 @@ def count_vowels(word):
     print(count)
     return count
 
-def test_challenge_01_happy_case(): 
+def test_challenge_01_happy_case1(): 
      assert count_vowels('Kaleidoscope') == 6   
 
-def test_challenge_01_empty_case(): 
-    assert count_vowels(' ') == 0
+def test_challenge_01_happy_case2(): 
+    assert count_vowels('Mississippi') == 4
+
+def test_challenge_01_happy_case3(): 
+    assert count_vowels('python') == 1
+
+def test_challenge_01_uppercase_case(): 
+    assert count_vowels('FLOWER') == 0
 
  
 #   Add test case
