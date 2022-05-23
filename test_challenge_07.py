@@ -17,7 +17,10 @@ def calculate_bill(shopping_list):
 
     if sum > 50:
 
-        if sum <= 100:
+        if sum > 300:
+          return sum * 0.7
+
+        elif sum <= 100:
             if str(sum) == first_num + '0':
                 discount = float('0.0' + str(int(first_num) - 1))
                 # return print(round(sum * (1 - discount), 2))
@@ -26,6 +29,8 @@ def calculate_bill(shopping_list):
                 discount = float('0.0' + str(int(first_num)))
                 # return print(round(sum * (1 - discount), 2))
                 return round(sum * (1 - discount), 2)
+
+
         else: 
             if str(sum) == first_second_num + '0':
                 discount = float('0.' + str(int(first_second_num) - 1))
@@ -35,10 +40,12 @@ def calculate_bill(shopping_list):
                 discount = float('0.' + str(int(first_second_num)))
                 # return print(round(sum * (1 - discount), 2))
                 return round(sum * (1 - discount), 2)
+
     else:
         # return print(round(sum, 2))
         return round(sum, 2)
 
+# calculate_bill({'apples':100, 'bananas':200, 'eggs':1})
 
     # if sum > 70:
     #     return round(sum * 0.93, 2)
@@ -66,3 +73,7 @@ def test_challenge_07_happy_case3(): # sum:101
 def test_challenge_07_happy_case4(): # sum:200
     shopping_list = {'apples':100, 'bananas':50, 'eggs':50}
     assert calculate_bill(shopping_list) == 162
+
+def test_challenge_07_happy_case5(): # sum:301
+    shopping_list = {'apples':100, 'bananas':200, 'eggs':1}
+    assert calculate_bill(shopping_list) == 210.7
