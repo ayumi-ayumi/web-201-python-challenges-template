@@ -4,6 +4,8 @@
 # should be counted as vowels — not y.
 
 def count_vowels(word):
+    if type(word) != str:
+          return False
     lower_word = word.lower()
     count = 0
     for each_character in lower_word:
@@ -23,6 +25,9 @@ def test_challenge_01_withNum_case():
 
 def test_challenge_01_mixed_upper_lower_case(): 
     assert count_vowels('FLOWERooo') == 5
+
+def test_challenge_01_only_num_case(): 
+    assert count_vowels(1234) == False
 
 
  

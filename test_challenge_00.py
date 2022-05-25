@@ -14,9 +14,10 @@
 # The string can contain any type and number of characters.
 
 def contains_equal_x_and_o_letters(word):
+    upper_word = word.upper()
     count_X = 0
     count_O = 0
-    for letter in word:
+    for letter in upper_word:
         if letter == 'X': 
             count_X = count_X + 1
         if letter == 'O': 
@@ -55,3 +56,6 @@ def test_challenge_00_only_o():
 
 def test_challenge_00_only_num():
     assert contains_equal_x_and_o_letters('12345') == True 
+
+def test_challenge_00_lower():
+    assert contains_equal_x_and_o_letters('xxooxx') == False 
