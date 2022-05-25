@@ -5,15 +5,13 @@
 # Write a function that takes an variable and returns 
 # True or False if the variable is a palindrome.
 
-def is_palindrome(var):
+def is_palindrome(var): #for loop can be used
     str_var = str(var) 
     new_var = str_var[::-1] 
     if (str_var == new_var):
         return True
     else:
         return False
-
-    # pass
 
 def test_challenge_04_palindrome_number1():
     assert is_palindrome(545) == True

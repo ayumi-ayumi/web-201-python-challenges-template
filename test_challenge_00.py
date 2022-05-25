@@ -52,3 +52,6 @@ def test_challenge_00_only_x():
 # Verify that passing a string with only Os will return False
 def test_challenge_00_only_o():
     assert contains_equal_x_and_o_letters('AOBO') == False 
+
+def test_challenge_00_only_num():
+    assert contains_equal_x_and_o_letters('12345') == True 
