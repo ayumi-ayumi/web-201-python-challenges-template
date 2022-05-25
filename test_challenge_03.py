@@ -15,7 +15,7 @@
 # Notes: Consider a month has 30 days.
 
 def wash_hands(n, m):
-    if type(n) != int or type(m) != int:
+    if type(n) == str or type(m) == str:
         return 'False'
 
     elif n < 0 or m < 0:
@@ -24,10 +24,10 @@ def wash_hands(n, m):
     else:
         # times_perday = n
         # months = m
-        onceSeconds = 21
-        totalSecondas = n * onceSeconds * m * 30
-        mins = totalSecondas // 60
-        seconds = totalSecondas % 60
+        duration = 21
+        total_duration = n * duration * m * 30
+        mins = round(total_duration // 60)
+        seconds = round(total_duration % 60)
         return (str(mins) + ' minutes and ' + str(seconds) + ' seconds')
 
 def test_challenge_03_case_1(): 
@@ -37,7 +37,7 @@ def test_challenge_03_case_2():
     assert wash_hands(0, 0) == '0 minutes and 0 seconds'
 
 def test_challenge_03_case_3(): 
-    assert wash_hands(7, 9) == '661 minutes and 30 seconds'
+    assert wash_hands(7, 9.0) == '661 minutes and 30 seconds'
 
 def test_challenge_03_case_4(): 
     assert wash_hands(7, -9) == 'False'
