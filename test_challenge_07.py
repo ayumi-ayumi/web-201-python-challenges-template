@@ -10,47 +10,23 @@ def calculate_bill(shopping_list):
 
     sum = 0
     for price in prices:
+        if type(price) == str or price < 0:
+            return 'invalid'
         sum += price 
-    sum_str = str(sum)
-    first_num = sum_str[0]
-    first_second_num = sum_str[0] + sum_str[1]
+
+    based_num = sum // 10
 
     if sum > 50:
-
         if sum > 300:
-          return sum * 0.7
-
-        elif sum <= 100:
-            if str(sum) == first_num + '0':
-                discount = float('0.0' + str(int(first_num) - 1))
-                return round(sum * (1 - discount), 2)
-            else: 
-                discount = float('0.0' + str(int(first_num)))
-                return round(sum * (1 - discount), 2)
-
-
-        else: 
-            if str(sum) == first_second_num + '0':
-                discount = float('0.' + str(int(first_second_num) - 1))
-                return round(sum * (1 - discount), 2)
-            else: 
-                discount = float('0.' + str(int(first_second_num)))
-                return round(sum * (1 - discount), 2)
+            return sum * 0.7
+        elif sum % 10 == 0: 
+            return round(sum * (1 - ((based_num - 1) / 100)), 2)
+            
+        else:
+            return round(sum * (1 - (based_num / 100)), 2)
 
     else:
-        return round(sum, 2)
-
-
-    # if sum > 70:
-    #     return round(sum * 0.93, 2)
-    # elif sum > 60:
-    #     return round(sum * 0.94, 2)
-    # elif sum > 50:
-    #     return round(sum * 0.95, 2)
-    # else:
-    #     return round(sum, 2)
-
-    # pass
+        return sum
 
 def test_challenge_07_happy_case1(): # sum:43.4
     shopping_list = {'apples':11.20, 'bananas':2.2, 'eggs':30.00}
@@ -72,4 +48,58 @@ def test_challenge_07_happy_case5(): # sum:301
     shopping_list = {'apples':100, 'bananas':200, 'eggs':1}
     assert calculate_bill(shopping_list) == 210.7
 
+def test_challenge_07_sad_str_case(): 
+    shopping_list = {'apples':"100", 'bananas':200, 'eggs':1}
+    assert calculate_bill(shopping_list) == 'invalid'
+
+def test_challenge_07_sad_negative_case(): 
+    shopping_list = {'apples':-100, 'bananas':200, 'eggs':1}
+    assert calculate_bill(shopping_list) == 'invalid'
+
     #sad case >> price is negative or str
+
+
+# def calculate_bill(shopping_list):
+#     prices = shopping_list.values()
+
+#     sum = 0
+#     for price in prices:
+#         sum += price 
+#     sum_str = str(sum)
+#     first_num = sum_str[0]
+#     first_second_num = sum_str[0] + sum_str[1]
+
+#     if sum > 50:
+
+#         if sum > 300:
+#           return sum * 0.7
+
+#         elif sum <= 100:
+#             if str(sum) == first_num + '0':
+#                 discount = float('0.0' + str(int(first_num) - 1))
+#                 return round(sum * (1 - discount), 2)
+#             else: 
+#                 discount = float('0.0' + str(int(first_num)))
+#                 return round(sum * (1 - discount), 2)
+
+
+#         else: 
+#             if str(sum) == first_second_num + '0':
+#                 discount = float('0.' + str(int(first_second_num) - 1))
+#                 return round(sum * (1 - discount), 2)
+#             else: 
+#                 discount = float('0.' + str(int(first_second_num)))
+#                 return round(sum * (1 - discount), 2)
+
+#     else:
+#         return round(sum, 2)
+
+
+    # if sum > 70:
+    #     return round(sum * 0.93, 2)
+    # elif sum > 60:
+    #     return round(sum * 0.94, 2)
+    # elif sum > 50:
+    #     return round(sum * 0.95, 2)
+    # else:
+    #     return round(sum, 2)
