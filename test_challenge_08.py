@@ -3,14 +3,14 @@
 # sample output:
 # 1, 2, Fizz, 3, 4, Buzz, 5, 6, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz ... and so on ..
 
-def FizzBuzz (n):
-  if type(n) != int or n < 0:
+def FizzBuzz (last_number):
+  if type(last_number) != int or last_number < 0:
     return "invalid"
 
-  list100 = range(1, n)
+  list_n = range(1, last_number)
   new_list = []
 
-  for i in list100:
+  for i in list_n:
     if i % 3 == 0 and i % 5 == 0:
       new_list.append('FizzBuzz')
     elif i % 3 == 0:
