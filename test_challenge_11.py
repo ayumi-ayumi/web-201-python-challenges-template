@@ -3,18 +3,17 @@
 # sample input: the quick brown fox, jumped over, the mouse.
 # sample output: mouse the, over jumped, fox brown quick the.
 
-
-
-
-
 original = 'the quick brown fox, jumped over, the mouse.'
-original_list = original.split('.')
-original_list_2 = original_list.split(' ')
+o = []
+for w in original.split(' '):
+  comma = ','
+  period = '.'
+  if comma in w:
+    w = comma + w[:-1]
+  elif period in w:
+    w = w[:-1]
 
-print(original_list_2)
-
-# new = first.split(',')
-# for i in new[0]:
-#   reversed_i = i[::-1]
-#   print(reversed_i)
-# print(new)
+  o.append(w)
+o = reversed(o)
+reversed_o = ' '.join(o) + '.'
+print(reversed_o)
